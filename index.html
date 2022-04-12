@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form">
+
+        <input type="text" placeholder="Ingrese nombre">
+        <button onclick="initGame()">Jugar!</button>
+    </div>
+    <div class="game-board">
+        <div class="box" id="11" onclick="select(11)"></div>
+        <div class="box" id="12" onclick="select(12)"></div>
+        <div class="box" id="13" onclick="select(13)"></div>
+        <div class="box" id="21" onclick="select(21)"></div>
+        <div class="box" id="22" onclick="select(22)"></div>
+        <div class="box" id="23" onclick="select(23)"></div>
+        <div class="box" id="31" onclick="select(31)"></div>
+        <div class="box" id="32" onclick="select(32)"></div>
+        <div class="box" id="33" onclick="select(33)"></div>
+      </div>
+
+      <div id="message"></div>
+
+      <script src="main.js"></script>
+</body>
+</html>

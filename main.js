@@ -36,15 +36,7 @@
  */
 
 let position = [11, 12, 13, 21, 22, 23, 31, 32, 33];
-let winPossibilities = [
-    111213, 212223, 313233, 112233, 132231, 112131, 122232, 132333,
-    121113, 222123, 323133, 221133, 221331, 211131, 221232, 231333,
-    121311, 222321, 323331, 223311, 223113, 213111, 223212, 233313,
 
-    312111, 322212, 332313, 332211, 132231, 131211, 232221, 333231,
-    213111,
-
-];
 let positionArrayWinner = [
     {
         position: 0,
@@ -147,7 +139,6 @@ let positionArrayWinner = [
     }
 
 ];
-//let winPossibilities = [312111, 322212, 332313, 332211, 132231, 131211, 232221, 333231];
 let boxes = [];
 let attemptOwner = 0;
 let stateOfGame = 0;
@@ -207,7 +198,8 @@ function select(a) {
                         document.getElementById('message').innerHTML = '<h1>IT IS A DRAW</h1>';
                      document.querySelectorAll('.box').forEach(element => {
                          element.innerHTML  = '';
-                     })
+                     });
+                     break;
 
                     case 2:
                         attemptOwner = 2;
@@ -259,7 +251,7 @@ function select(a) {
                             element.innerHTML  = '';
                         })
                         document.getElementById('message').innerHTML = '<h1>IT IS A DRAW</h1>';
-
+                        break;
 
                     case 2:
                         attemptOwner = 1;
@@ -310,55 +302,54 @@ function checkWin(player) {
         }
     }
     console.log(counterdraw)
-    if (counterdraw == 9) {
-
-        result = 1
-
-    } else {
-        for (let i = 0; i < boxes.length; i++) {
-            if (boxes[i].selectionOwner == numberplayer) {
-
-                accomulator .push(boxes[i].position);
-            }
-
-        }
-        console.log(accomulator)
-        for (let i = 0; i < accomulator.length; i++) {
-            let posAux = position.indexOf(accomulator[i]);
-            let objectAux=[];
-            for (let j = 0; j < positionArrayWinner.length; j++) {
-                if (posAux == positionArrayWinner[j].position) {
-                    objectAux.push(positionArrayWinner[j]);
-                }
-            }
-            console.log(objectAux)
-            for (let j = 0; j < objectAux.length; j++) {
-
-                let counterAux = 0;
-                console.log(j)
-                for(let k=i;k<accomulator.length; k++){
-                    let posAux2 = position.indexOf(accomulator[k]);
-                    console.log(objectAux)
-
-                    if (objectAux[j].friend1 == posAux2 || objectAux[j].friend2 == posAux2) {
-                        counterAux++;
     
-                    }
-                }
-                console.log(counterAux)
-                if (counterAux == 2) {
-                    result = 0;
-                }
+    for (let i = 0; i < boxes.length; i++) {
+        if (boxes[i].selectionOwner == numberplayer) {
 
-
-
-
-            }
-
-
+            accomulator .push(boxes[i].position);
         }
 
     }
+    console.log(accomulator)
+    for (let i = 0; i < accomulator.length; i++) {
+        let posAux = position.indexOf(accomulator[i]);
+        let objectAux=[];
+        for (let j = 0; j < positionArrayWinner.length; j++) {
+            if (posAux == positionArrayWinner[j].position) {
+                objectAux.push(positionArrayWinner[j]);
+            }
+        }
+        console.log(objectAux)
+        for (let j = 0; j < objectAux.length; j++) {
+
+            let counterAux = 0;
+            console.log(j)
+            for(let k=i;k<accomulator.length; k++){
+                let posAux2 = position.indexOf(accomulator[k]);
+                console.log(objectAux)
+
+                if (objectAux[j].friend1 == posAux2 || objectAux[j].friend2 == posAux2) {
+                    counterAux++;
+
+                }
+            }
+            console.log(counterAux)
+            if (counterAux == 2) {
+                result = 0;
+            }
+
+
+
+
+        }
+
+
+    }
+    if(result != 0 && counterdraw == 9){
+        result = 1;
+    }
+
+
     console.log(result)
 
     return result;
